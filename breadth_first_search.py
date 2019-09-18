@@ -1,23 +1,8 @@
 # File breadth_first_search.py
 # Author(s): xingqil, xxxx
 
-# 1.a (function definition)
-'''
-def BFS(G, root, target): # Pythonish pseudocode
-   S.add(root)
-   T.add(root, None)      # value, parent
-   Q = [root]
-   while Q:
-      cur = Q.pop(0)
-      if cur is target:
-         return cur parent list
-      for v in G[cur]:
-         if v not in S:
-            S.add(v)
-            T.add(v, cur)
-            Q += [v]
-'''
 
+# 1.a (function definition)
 def BFS(G, root, target):
     S = {root}
     T = {root: None}

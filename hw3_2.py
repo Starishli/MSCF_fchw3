@@ -49,15 +49,15 @@ def Rev(N):
 
 # 2.b
 def find_shrt_path(A):
-    n = len(A)
+    n_ = len(A)
 
     def _find_shrt_path(A, k):
         new_A = [[x for x in y] for y in A]
 
-        for i in range(n):
+        for i in range(n_):
             if i == k:
                 continue
-            for j in range(n):
+            for j in range(n_):
                 if j == k:
                     continue
 
@@ -65,18 +65,25 @@ def find_shrt_path(A):
 
         return new_A
 
-    for dim in range(n):
+    for dim in range(n_):
         A = _find_shrt_path(A, dim)
 
     return A
 
 
 # 2.d
-def find_max_sublist(l):
-    if len(l) == 1:
+def max_sublist_sum(l):
+    n_ = len(l)
+    if n_ == 1:
         return l
     else:
-        pass
+        mx_l = [0, ] * n_
+        mx_l[0] = l[0]
+
+        for i in range(1, n_):
+            mx_l[i] = max(l[i], mx_l[i - 1] + l[i])
+
+        return max(mx_l)
 
 
 if __name__ == "__main__":
@@ -103,6 +110,20 @@ if __name__ == "__main__":
     print("A_7 is: {}".format(find_shrt_path(A_0)))
 
     # 2.d
+    import numpy as np
+
+    np.random.seed(1)  # so results match
+
+    list1 = [2, -4, 7, 2, 0, 5, -3, 4, -2]
+    print("max_sublist_sum(", list1,
+          "): ", max_sublist_sum(list1))
+
+    for n in range(10, 20):
+        listn = list(np.random.randint(-5, 9, size=n))
+        print("max_sublist_sum(", listn,
+              "): ", max_sublist_sum(listn))
+
+
 
 
 
